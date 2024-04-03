@@ -1,0 +1,31 @@
+#!/usr/bin/env python3
+
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+import numpy as np
+
+T = []
+X = []
+Sol = []
+
+try:
+    file = open("data.txt")
+    
+except:
+    print("Error, can't open file")
+    exit(1)
+
+for line in file:
+    line = line.replace("\n", "")
+    data = line.split(" ")
+    t, x, sol = data
+    T.append(float(t))
+    X.append(float(x))
+    Sol.append(float(sol))
+
+fig = plt.figure(figsize=(7,4))
+ax = fig.add_subplot(111, projection='3d')
+ax.set_xlabel('x')
+ax.set_ylabel('t')
+ax.scatter(X, T, Sol)
+plt.show()
